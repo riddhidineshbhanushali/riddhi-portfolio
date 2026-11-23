@@ -14,6 +14,20 @@ document.querySelectorAll('.animate').forEach(el => observer.observe(el));
 const toggleBtn = document.getElementById('lang-toggle');
 let currentLang = 'en';
 
+// Show back‑to‑top button when scrolling
+const topBtn = document.getElementById('topBtn');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 200) {
+    topBtn.style.display = 'block';
+  } else {
+    topBtn.style.display = 'none';
+  }
+});
+
+topBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
 toggleBtn.addEventListener('click', () => {
   currentLang = currentLang === 'en' ? 'de' : 'en';
   document.documentElement.setAttribute('lang', currentLang);
@@ -56,6 +70,20 @@ toggleBtn.addEventListener('click', () => {
 
 const toggleBtn = document.getElementById('lang-toggle');
 let currentLang = 'en';
+
+// Show back‑to‑top button when scrolling
+const topBtn = document.getElementById('topBtn');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 200) {
+    topBtn.style.display = 'block';
+  } else {
+    topBtn.style.display = 'none';
+  }
+});
+
+topBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 
 toggleBtn.addEventListener('click', () => {
   currentLang = currentLang === 'en' ? 'de' : 'en';

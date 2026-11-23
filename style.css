@@ -43,6 +43,181 @@ body {
 }
 .animate.visible { opacity: 1; transform: none; }
 
+/* Hero background animation */
+@keyframes heroBg {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
+.hero {
+  background: linear-gradient(270deg, #1e1e2f, #2a2a3b, #1e1e2f);
+  background-size: 600% 600%;
+  animation: heroBg 15s ease infinite;
+  text-align: center;
+  padding: calc(var(--gap) * 3) var(--gap);
+  position: relative;
+  color: var(--text);
+}
+.hero .name {
+  font-size: 2.5rem;
+  margin-bottom: .4rem;
+}
+.hero .tagline {
+  font-size: 1.2rem;
+  color: var(--muted);
+  overflow: hidden;
+  border-right: .15em solid var(--accent);
+  white-space: nowrap;
+  width: 0;
+  animation: typing 3.5s steps(40, end) forwards, blink-caret .75s step-end infinite;
+}
+/* Hero buttons */
+.hero-btns {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+/* Language toggle */
+.lang-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: 1px solid var(--muted);
+  color: var(--muted);
+  padding: .3rem .6rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+/* Card hover lift and 3D */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: var(--gap);
+  margin-bottom: var(--gap);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  transform: translateY(-4px) rotateY(5deg);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+}
+/* Card links */
+.card-links a, .card-links span {
+  margin-right: .8rem;
+  font-size: .9rem;
+  color: var(--accent);
+}
+.card-links .no-demo, .card-links .no-github {
+  color: var(--muted);
+}
+/* Section styling */
+.section {
+  padding: calc(var(--gap) * 2) var(--gap);
+  max-width: 960px;
+  margin: 0 auto var(--gap);
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+/* Headings */
+h1, h2, h3 {
+  margin: 0 0 .5rem;
+  line-height: 1.2;
+  color: var(--accent);
+}
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: .6rem 1.2rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background .2s, transform .2s;
+}
+.btn.primary { background: var(--accent); color: #fff; }
+.btn.primary:hover { background: #00b39e; transform: scale(1.05); }
+.btn.secondary { background: transparent; border: 2px solid var(--accent); color: var(--accent); }
+.btn.secondary:hover { background: var(--accent); color: #fff; transform: scale(1.05); }
+/* Skill list */
+.skill-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: .5rem;
+}
+.skill-list li {
+  background: var(--bg-card);
+  padding: .4rem .6rem;
+  border-radius: var(--radius);
+}
+/* Footer */
+.footer { text-align: center; padding: var(--gap); font-size: .9rem; color: var(--muted); }
+/* Back‑to‑top button */
+#topBtn {
+  position: fixed;
+  bottom: 2rem; right: 2rem;
+  display: none;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 48px; height: 48px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: background .2s, transform .2s;
+}
+#topBtn:hover { background: #00b39e; transform: translateY(-2px); }
+/* Responsive */
+@media (max-width: 600px) {
+  .hero .name { font-size: 2rem; }
+  .hero .tagline { font-size: 1rem; }
+}
+
+:root {
+  --bg: #121212;
+  --bg-card: #1e1e1e;
+  --text: #e0e0e0;
+  --accent: #00d1b2;
+  --muted: #777;
+  --radius: 8px;
+  --gap: 1.5rem;
+  --font: system-ui, -apple-system, sans-serif;
+}
+/* Light mode (optional toggle) */
+[data-theme="light"] {
+  --bg: #fafafa;
+  --bg-card: #fff;
+  --text: #222;
+  --accent: #0066ff;
+  --muted: #555;
+}
+/* Global reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+/* Scroll‑reveal animation */
+.animate {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.animate.visible { opacity: 1; transform: none; }
+
 /* Card hover lift */
 .card {
   transition: transform 0.2s, box-shadow 0.2s;
