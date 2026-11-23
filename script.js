@@ -10,8 +10,17 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.animate').forEach(el => observer.observe(el));
 
-// Existing language toggle code (unchanged) – placed after the reveal logic
-const toggleBtn = document.getElementById('lang-toggle');
+// Theme toggle (dark / light)
+const themeToggleBtn = document.getElementById('themeToggle');
+let isDark = false;
+
+themeToggleBtn.addEventListener('click', () => {
+  isDark = !isDark;
+  document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+  themeToggleBtn.textContent = isDark ? '☀️' : '🌙';
+});
+
+// Language toggle (kept for future i18n)
 let currentLang = 'en';
 
 // Show back‑to‑top button when scrolling
