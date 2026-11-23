@@ -1,5 +1,32 @@
-// Simple EN/DE toggle – replace the strings in the `translations` object with real German text if you wish.
-const translations = {
+// Scroll‑reveal – add .visible when element enters viewport
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+
+// Existing language toggle code (unchanged) – placed after the reveal logic
+const toggleBtn = document.getElementById('lang-toggle');
+let currentLang = 'en';
+
+toggleBtn.addEventListener('click', () => {
+  currentLang = currentLang === 'en' ? 'de' : 'en';
+  document.documentElement.setAttribute('lang', currentLang);
+  const keys = document.querySelectorAll('[data-key]');
+  keys.forEach(el => {
+    const key = el.getAttribute('data-key');
+    const text = translations[currentLang][key];
+    if (text) el.textContent = text;
+  });
+});
+
+// Initial load – keep English (fallback) if translation missing.
+
   de: {
     heroTagline: "Computer‑Science‑ und ML‑Student – auf der Suche nach Daten‑, ML‑ oder Software‑Jobs in Deutschland.",
     projectsTitle: "Projekte",

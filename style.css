@@ -35,12 +35,54 @@ body {
   color: var(--text);
   line-height: 1.6;
 }
+/* Scroll‑reveal animation */
+.animate {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.animate.visible { opacity: 1; transform: none; }
+
+/* Card hover lift */
+.card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+/* Experience duration style */
+.duration { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.5rem; }
+
+/* Hero tagline typewriter */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+.tagline {
+  overflow: hidden; /* Ensures the text stays within its container */
+  border-right: .15em solid var(--accent);
+  white-space: nowrap;
+  width: 0;
+  animation: typing 3.5s steps(40, end) forwards, blink-caret .75s step-end infinite;
+}
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--accent); }
+}
+
 /* Layout helpers */
 .section {
   padding: calc(var(--gap) * 2) var(--gap);
   max-width: 960px;
-  margin: 0 auto;
+  margin: 0 auto  var(--gap);
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
+
+
 h1, h2, h3 {
   margin: 0 0 .5rem;
   line-height: 1.2;
@@ -48,6 +90,28 @@ h1, h2, h3 {
 }
 p { margin: 0 0 1rem; }
 /* Hero */
+.hero {
+  background: linear-gradient(135deg, #1e1e2f, #0a0a15);
+  text-align: center;
+  padding: calc(var(--gap) * 3) var(--gap);
+  position: relative;
+  color: var(--text);
+}
+.hero .name {
+  font-size: 2.8rem;
+  margin-bottom: .4rem;
+}
+.hero .tagline {
+  font-size: 1.2rem;
+  color: var(--muted);
+}
+.hero-btns {
+  margin-top: 1.2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
 .hero {
   background: var(--bg-card);
   text-align: center;
