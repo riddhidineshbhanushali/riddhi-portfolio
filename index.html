@@ -1,124 +1,114 @@
 <!DOCTYPE html>
-<html lang="en" data-lang="en" data-theme="light">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- SEO -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Riddhi Dinesh Bhanushali – Portfolio</title>
-  <meta name="description" content="Computer‑science & ML student from Saarland University. Showcasing data‑science, ML and front‑end projects.">
-  <link rel="icon" href="assets/favicon.ico">
-  <link rel="stylesheet" href="style.css?v=2">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-..."
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="stylesheet" href="style.css?v=6" />
 </head>
 <body>
-  <!-- Hero Section -->
-  <header class="hero">
-    <button class="theme-toggle" id="themeToggle">🌙</button>
-    <h1 class="name">Riddhi Dinesh Bhanushali</h1>
-    <p class="tagline" data-key="heroTagline">Computer‑science &amp; ML student – looking for data, ML or software roles in Germany.</p>
-    <div class="btns">
-      <a href="#about" class="btn btn-primary">About Me</a>
-      <a href="#projects" class="btn btn-primary">Projects</a>
-      <a href="#contact" class="btn btn-secondary">Contact</a>
-    </div>
-  </header>
-
-  <main class="container">
-    <!-- About -->
-    <section id="about" class="section animate">
-      <h2 data-key="aboutTitle">About Me</h2>
-      <p data-key="bio">I’m a computer‑science student at Saarland University. I love turning data into insight and building clean front‑ends. I’m looking for data‑science, ML or software roles in Germany.</p>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="section animate">
-      <h2 data-key="projectsTitle">Projects</h2>
-      <article class="card">
-        <h3 data-key="proj1Title">Strom‑Wächter</h3>
-        <p class="problem" data-key="proj1Problem">German electricity prices fluctuate wildly.</p>
-        <p class="what" data-key="proj1What">I built a live tracker that pulls SMARD data and visualises price trends.</p>
-        <p class="tech" data-key="proj1Tech">Python, pandas, Plotly, Streamlit, GitHub Actions</p>
-        <p class="result" data-key="proj1Result">Users can spot cheap hours and plan consumption.</p>
-        <div class="card-links">
-          <a href="https://strom-wachter.streamlit.app/" target="_blank" rel="noopener">Live demo</a>
-          <a href="https://github.com/riddhidineshbhanushali/strom-waechter.git" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </article>
-      <article class="card">
-        <h3 data-key="proj2Title">Germany Student Companion</h3>
-        <p class="problem" data-key="proj2Problem">International students struggle to find practical information about studying in Germany.</p>
-        <p class="what" data-key="proj2What">I created a web portal that aggregates visa guides, housing tips and scholarship listings.</p>
-        <p class="tech" data-key="proj2Tech">Python (Flask), SQLite, Bootstrap, Netlify (static build)</p>
-        <p class="result" data-key="proj2Result">Visitors can quickly locate the resources they need.</p>
-        <div class="card-links">
-          <span class="no-demo">Demo not available</span>
-          <a href="https://github.com/riddhidineshbhanushali/germany-student-companion.git" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </article>
-      <article class="card">
-        <h3 data-key="proj3Title">LSTM‑Based Time‑Series Forecasting</h3>
-        <p class="problem" data-key="proj3Problem">Farmers need reliable price forecasts for horticultural commodities.</p>
-        <p class="what" data-key="proj3What">I co‑invented an LSTM model that predicts weekly price movements.</p>
-        <p class="tech" data-key="proj3Tech">Python, TensorFlow/Keras, pandas, scikit‑learn</p>
-        <p class="result" data-key="proj3Result">The model achieved a mean‑absolute‑percentage‑error below 8 % on test data.</p>
-        <div class="card-links">
-          <span class="no-demo">Demo not available</span>
-          <span class="no-github">GitHub private</span>
-        </div>
-      </article>
-    </section>
-
-    <!-- Work Experience -->
-    <section id="experience" class="section animate">
-      <h2 data-key="experienceTitle">Work Experience</h2>
-      <article class="card">
-        <h3>Frontend Developer Intern – Eresource ERP</h3>
-        <p class="duration" data-key="expDuration">2023 – 2024</p>
+  <div class="container">
+    <!-- Sidebar (vCard) -->
+    <aside class="sidebar">
+      <div class="profile">
+        <img src="assets/profile.jpg" alt="Profile picture" class="profile-img" />
+        <h1 class="name">Riddhi Dinesh Bhanushali</h1>
+        <p class="title">Full‑Stack Engineer</p>
+      </div>
+      <nav class="sidebar-nav">
         <ul>
-          <li>Designed interactive UI prototypes using Figma.</li>
-          <li>Developed responsive interfaces with ReactJS.</li>
-          <li>Built reusable UI components for consistency.</li>
-          <li>Integrated REST APIs with backend developers.</li>
-          <li>Participated in usability discussions and improvements.</li>
+          <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+          <li><a href="#projects"><i class="fas fa-code"></i> Projects</a></li>
+          <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
+          <li><a href="#skills"><i class="fas fa-cogs"></i> Skills</a></li>
+          <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+          <li><a href="assets/Riddhi_CV.pdf" download><i class="fas fa-download"></i> Download CV</a></li>
         </ul>
-      </article>
-    </section>
+      </nav>
+      <div class="theme-toggle">
+        <input type="checkbox" id="theme-switch" />
+        <label for="theme-switch"><i class="fas fa-moon"></i> Dark mode</label>
+      </div>
+    </aside>
 
-    <!-- Skills -->
-    <section id="skills" class="section animate">
-      <h2 data-key="skillsTitle">Skills</h2>
-      <ul class="skill-list">
-        <li>Python</li>
-        <li>SQL</li>
-        <li>Machine Learning (scikit‑learn, TensorFlow)</li>
-        <li>Data analysis (pandas, NumPy)</li>
-        <li>JavaScript / React</li>
-        <li>HTML & CSS (responsive, accessible)</li>
-      </ul>
-    </section>
+    <!-- Main content -->
+    <main class="main">
+      <section id="about" class="section">
+        <h2>About Me</h2>
+        <p>Hello! I am Riddhi, a passionate developer with experience building web applications, mobile apps, and cloud services. I love turning ideas into beautiful, functional products.</p>
+      </section>
 
-    <!-- Contact -->
-    <section id="contact" class="section animate">
-      <h2 data-key="contactTitle">Contact</h2>
-      <p class="contact-links">
-        <a href="mailto:riddhi06012005@gmail.com">riddhi06012005@gmail.com</a>
-        <a href="https://www.linkedin.com/in/riddhi-bhanushali-5501042aa0" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://github.com/riddhidineshbhanushali" target="_blank" rel="noopener">GitHub</a>
-      </p>
-    </section>
+      <section id="projects" class="section">
+        <h2>Projects</h2>
+        <div class="grid">
+          <!-- Example project card -->
+          <div class="card">
+            <h3>Project One</h3>
+            <p>Brief description of the project, technologies used, and impact.</p>
+            <a href="#" class="btn">View Demo</a>
+          </div>
+          <div class="card">
+            <h3>Project Two</h3>
+            <p>Brief description of the project, technologies used, and impact.</p>
+            <a href="#" class="btn">View Demo</a>
+          </div>
+          <!-- Add more cards as needed -->
+        </div>
+      </section>
 
-    <!-- Download CV -->
-    <section id="download-cv" class="section animate">
-      <h2>Download CV</h2>
-      <p><a href="cv.pdf" download class="btn btn-secondary" data-key="cvBtn">Download CV</a></p>
-    </section>
-  </main>
+      <section id="experience" class="section">
+        <h2>Work Experience</h2>
+        <ul class="timeline">
+          <li>
+            <h3>Software Engineer – Company A</h3>
+            <span>2022 – Present</span>
+            <p>Worked on full‑stack features, performance optimisation, and CI/CD pipelines.</p>
+          </li>
+          <li>
+            <h3>Intern – Company B</h3>
+            <span>2021 – 2022</span>
+            <p>Built internal tools with React and Node.js, improving team productivity.</p>
+          </li>
+        </ul>
+      </section>
 
-  <button id="topBtn" aria-label="Back to top">↑</button>
+      <section id="skills" class="section">
+        <h2>Technical Skills</h2>
+        <div class="skill-grid">
+          <div class="skill">JavaScript / TypeScript</div>
+          <div class="skill">React / Next.js</div>
+          <div class="skill">Node.js / Express</div>
+          <div class="skill">Python / Django</div>
+          <div class="skill">SQL / NoSQL</div>
+          <div class="skill">AWS / GCP</div>
+          <div class="skill">Git / CI‑CD</div>
+          <div class="skill">UI/UX Design</div>
+        </div>
+      </section>
 
-  <footer class="footer">
-    <p>&copy; 2026 Riddhi Dinesh Bhanushali</p>
-  </footer>
+      <section id="contact" class="section">
+        <h2>Get In Touch</h2>
+        <p>Feel free to drop me a line at <a href="mailto:riddhi@example.com">riddhi@example.com</a> or connect on LinkedIn.</p>
+        <div class="social-icons">
+          <a href="https://github.com/riddhidineshbhanushali" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/riddhi" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </section>
+    </main>
+  </div>
 
-  <script src="script.js"></script>
+  <button id="back-to-top" title="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+  <script src="script.js?v=6"></script>
 </body>
 </html>

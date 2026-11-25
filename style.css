@@ -1,152 +1,125 @@
 /* -------------------------------------------------
-   Modern clean portfolio – light default, dark toggle
+   Ultra‑modern portfolio – light default, dark toggle
    ------------------------------------------------- */
 
-/* Root variables – default light theme */
+/* ------- Fonts & Icons (CDN) ------- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+/* ------- Root variables – light theme ------- */
 :root {
-  --bg: #fafafa;
+  --bg: #fdfdfd;
   --bg-card: #ffffff;
   --text: #222222;
   --accent: #0066ff;
+  --accent-dark: #004fbf;
   --muted: #555555;
-  --radius: 10px;
-  --gap: 1.5rem;
-  --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-mono: 'Courier New', monospace;
+  --radius: 12px;
+  --gap: 2rem;
+  --font: 'Montserrat', sans-serif;
+  --shadow-light: 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-dark: 0 8px 24px rgba(0,0,0,0.2);
 }
-/* Dark mode – activated by adding .dark class to <html> */
+/* Dark mode – activated by adding data-theme="dark" to <html> */
 [data-theme="dark"] {
   --bg: #121212;
   --bg-card: #1e1e1e;
   --text: #e0e0e0;
   --accent: #00d1b2;
+  --accent-dark: #009088;
   --muted: #aaaaaa;
+  --shadow-light: 0 4px 12px rgba(0,0,0,0.2);
+  --shadow-dark: 0 8px 24px rgba(0,0,0,0.4);
 }
 
-/* Global reset */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-html {
-  scroll-behavior: smooth;
-  font-family: var(--font-sans);
-  background: var(--bg);
-  color: var(--text);
-}
-body {
-  line-height: 1.6;
-  min-height: 100vh;
-}
+/* ------- Global reset ------- */
+*, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
+html { scroll-behavior: smooth; font-family: var(--font); background: var(--bg); color: var(--text); }
+body { line-height: 1.6; min-height: 100vh; }
 
-/* Typography */
-h1, h2, h3 {
-  color: var(--accent);
-  margin-bottom: 0.5rem;
-}
-h1 {font-size: 2.8rem;}
-h2 {font-size: 2rem;}
-h3 {font-size: 1.5rem;}
-p {margin-bottom: 1rem;}
+/* ------- Typography ------- */
+h1, h2, h3 { color: var(--accent); margin-bottom: 0.6rem; }
+h1 { font-size: 3rem; font-weight: 700; }
+h2 { font-size: 2.2rem; font-weight: 600; }
+h3 { font-size: 1.6rem; font-weight: 600; }
+p { margin-bottom: 1rem; }
 
-/* Layout helpers */
-.container {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: var(--gap);
-}
-.section {
-  background: var(--bg-card);
-  border-radius: var(--radius);
-  padding: var(--gap);
-  margin-bottom: var(--gap);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
+/* ------- Layout helpers ------- */
+.container { max-width: 1140px; margin: 0 auto; padding: var(--gap); }
+.section { background: var(--bg-card); border-radius: var(--radius); padding: var(--gap); margin-bottom: var(--gap); box-shadow: var(--shadow-light); }
 
-/* Hero */
+/* ------- Navbar (sticky) ------- */
+nav {
+  position: sticky; top:0; background: var(--bg-card); padding: 0.8rem var(--gap); display:flex; justify-content: space-between; align-items:center; box-shadow: var(--shadow-light); z-index: 100;
+}
+nav .logo { font-size:1.5rem; font-weight:600; color:var(--accent); }
+nav ul { list-style:none; display:flex; gap:1.5rem; }
+nav a { color:var(--text); text-decoration:none; font-weight:500; transition:color .2s; }
+nav a:hover { color:var(--accent); }
+
+/* ------- Hero ------- */
 .hero {
-  background: linear-gradient(135deg, #0066ff, #00d1b2);
-  color: #fff;
-  text-align: center;
-  padding: calc(var(--gap) * 3) var(--gap);
-  position: relative;
-  overflow: hidden;
+  position:relative; background: linear-gradient(135deg, var(--accent), var(--accent-dark)); color:#fff; text-align:center; padding: calc(var(--gap) * 2) var(--gap); overflow:hidden; border-radius: var(--radius);
 }
 .hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url('https://riddhidineshbhanushali.github.io/riddhi-portfolio/assets/hero-bg.jpg') center/cover;
-  opacity: 0.15;
-  z-index: -1;
+  content:''; position:absolute; inset:0; background:url('https://riddhidineshbhanushali.github.io/riddhi-portfolio/assets/hero-bg.jpg') center/cover; opacity:0.12; z-index:-1;
 }
-.name {font-size: 3rem; font-weight: 700;}
-.tagline {
-  font-size: 1.25rem;
-  margin-top: 0.5rem;
-  color: rgba(255,255,255,0.9);
-  animation: typing 3s steps(40, end) forwards, blink .7s step-end infinite;
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: .12em solid var(--accent);
+.hero .name { font-size:3.2rem; margin-bottom:0.4rem; }
+.hero .tagline {
+  font-size:1.3rem; margin-top:0.5rem; border-right:.12em solid #fff; overflow:hidden; white-space:nowrap; animation:typing 3s steps(40, end) forwards, blink .7s step-end infinite;
 }
-@keyframes typing {from {width:0;} to {width:100%;}}
-@keyframes blink {0%,100% {border-color:transparent;} 50% {border-color:var(--accent);}}
-.hero .btns {margin-top: 1.5rem; display:flex; gap:1rem; justify-content:center;}
+@keyframes typing { from{width:0;} to{width:100%;} }
+@keyframes blink { 0%,100%{border-color:transparent;} 50%{border-color:#fff;} }
+.hero .btns { margin-top:1.4rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
 .btn {
-  display:inline-block;
-  padding:0.6rem 1.2rem;
-  border-radius:var(--radius);
-  text-decoration:none;
-  font-weight:600;
-  transition:transform .2s,background .2s;
-}
-.btn-primary {background:var(--accent); color:#fff;}
-.btn-primary:hover {transform:scale(1.05); background:#0055e6;}
-.btn-secondary {background:transparent; border:2px solid var(--accent); color:var(--accent);}
-.btn-secondary:hover {background:var(--accent); color:#fff; transform:scale(1.05);}
+  display:inline-block; padding:0.8rem 1.4rem; border-radius:var(--radius); text-decoration:none; font-weight:600; transition:background .2s, transform .2s; }
+.btn-primary { background:var(--accent); color:#fff; }
+.btn-primary:hover { background:var(--accent-dark); transform:scale(1.05); }
+.btn-secondary { background:transparent; border:2px solid var(--accent); color:var(--accent); }
+.btn-secondary:hover { background:var(--accent); color:#fff; transform:scale(1.05); }
+.theme-toggle { background:transparent; border:2px solid #fff; color:#fff; padding:0.3rem 0.6rem; border-radius:var(--radius); cursor:pointer; }
 
-/* Dark mode toggle */
-.theme-toggle {
-  position:absolute; top:1rem; right:1rem; background:transparent; border:2px solid #fff; color:#fff; padding:0.3rem 0.6rem; border-radius:var(--radius); cursor:pointer;
+/* ------- Cards (Projects & Experience) ------- */
+.grid {
+  display:grid; gap:var(--gap);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
-
-/* Cards */
 .card {
-  background:var(--bg-card);
-  border-radius:var(--radius);
-  padding:var(--gap);
-  box-shadow:0 2px 6px rgba(0,0,0,0.1);
-  transition:transform .3s,box-shadow .3s;
+  background:var(--bg-card); border-radius:var(--radius); padding:var(--gap); box-shadow: var(--shadow-light); transition:transform .3s, box-shadow .3s;
 }
-.card:hover {transform:translateY(-5px) rotateY(2deg); box-shadow:0 8px 16px rgba(0,0,0,0.2);}
-.card-links a {color:var(--accent); text-decoration:none; margin-right:0.5rem;}
-.card-links a:hover {text-decoration:underline;}
+.card:hover { transform:translateY(-6px) rotateY(2deg); box-shadow: var(--shadow-dark); }
+.card h3 { margin-bottom:0.4rem; }
+.card .card-links a { color:var(--accent); margin-right:0.6rem; text-decoration:none; font-size:0.9rem; }
+.card .card-links a:hover { text-decoration:underline; }
+.card .no-demo, .card .no-github { color:var(--muted); font-size:0.9rem; }
 
-/* Skill list – icons */
-.skill-list {display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:0.5rem; list-style:none; padding:0;}
-.skill-list li {background:var(--bg); padding:0.4rem 0.6rem; border-radius:var(--radius); text-align:center;}
+/* ------- Skill list ------- */
+.skill-list { display:grid; grid-template-columns:repeat(auto-fit, minmax(120px,1fr)); gap:0.6rem; list-style:none; padding:0; }
+.skill-list li { background:var(--bg); padding:0.5rem 0.8rem; border-radius:var(--radius); text-align:center; font-weight:500; }
 
-/* Contact */
-.contact-links a {color:var(--accent); margin-right:1rem; text-decoration:none;}
-.contact-links a:hover {text-decoration:underline;}
+/* ------- Contact ------- */
+.contact-links a { color:var(--accent); margin-right:1rem; font-size:1.2rem; transition:color .2s; }
+.contact-links a:hover { color:var(--accent-dark); }
 
-/* Footer */
-.footer {text-align:center; padding:var(--gap); font-size:0.9rem; color:var(--muted);}
+/* ------- Footer ------- */
+.footer { text-align:center; padding:var(--gap); font-size:0.9rem; color:var(--muted); }
 
-/* Back‑to‑top button */
+/* ------- Back‑to‑top button ------- */
 #topBtn {
-  position:fixed; bottom:1.5rem; right:1.5rem; display:none; background:var(--accent); color:#fff; border:none; border-radius:50%; width:48px; height:48px; font-size:1.5rem; cursor:pointer; box-shadow:0 4px 8px rgba(0,0,0,0.3); transition:background .2s,transform .2s;
+  position:fixed; bottom:1.5rem; right:1.5rem; display:none; background:var(--accent); color:#fff; border:none; border-radius:50%; width:48px; height:48px; font-size:1.5rem; cursor:pointer; box-shadow: var(--shadow-light); transition:background .2s, transform .2s;
 }
-#topBtn:hover {background:#0055e6; transform:translateY(-2px);}
+#topBtn:hover { background:var(--accent-dark); transform:translateY(-2px); }
 
-/* Animations */
-.animate {opacity:0; transform:translateY(30px); transition:opacity .6s ease-out, transform .6s ease-out;}
-.animate.visible {opacity:1; transform:none;}
+/* ------- Animations (scroll‑reveal) ------- */
+.animate { opacity:0; transform:translateY(40px); transition:opacity .7s ease-out, transform .7s ease-out; }
+.animate.visible { opacity:1; transform:none; }
 
-/* Responsive */
+/* ------- Responsive tweaks ------- */
+@media (max-width:768px) {
+  .hero .name { font-size:2.6rem; }
+  .hero .tagline { font-size:1.1rem; }
+}
 @media (max-width:600px) {
-  .hero .name {font-size:2.2rem;}
-  .hero .tagline {font-size:1rem;}
+  nav ul { gap:1rem; }
+  .hero { padding: var(--gap) var(--gap); }
 }
